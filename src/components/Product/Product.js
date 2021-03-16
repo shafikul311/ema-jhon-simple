@@ -27,7 +27,7 @@ const Product = (props) => {
                 <p>price: {price}</p>
                
 
-                <p><small>onley {stock} left in stock</small></p>
+                <p><small>only {stock} left in stock</small></p>
                 {
                    props.showAddTOCart && <button 
                     onClick={()=>props.handleAddProduct(props.product)}

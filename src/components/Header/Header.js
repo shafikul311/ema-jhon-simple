@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import './Header.css';
 
@@ -8,9 +9,9 @@ export class Header extends Component {
             <div className="header">
                 <img src={logo} alt='eaa-jhon'></img>
                 <nav>
-                    <a href="/shop">Shop</a>
-                    <a href="/review">Review</a>
-                    <a href="/manage">Manage inventory</a>
+                    <Link to="/shop">Shop</Link>
+                    <Link to="/review">Review</Link>
+                    <Link to="/manage">Manage inventory</Link>
                 </nav>
             </div>
         )

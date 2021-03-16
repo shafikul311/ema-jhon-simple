@@ -4,16 +4,17 @@ import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../uti
 import Cart from '../Cart/Cart';
 import ReviewItems from '../ReviewItems/ReviewItems';
 import happyImage from '../../images/giphy.gif';
+import { useHistory } from 'react-router';
 
 const Review = () => {
     const [cart , setCart] = useState([])
 
-    const [orderPalced , setOrderplaced] = useState([false])
+    const [orderPalced , setOrderplaced] = useState(false)
+    const history = useHistory()
 
-    const handlePlaceOrder = () => {
-        setCart([])
-        setOrderplaced(true)
-        processOrder()
+    const handleProceedCheckout = () => {
+        history.push('/shipment');
+        
     }
 
    const removeProduct = (productkey) => {
@@ -32,7 +33,7 @@ const Review = () => {
 
        const cartProducts = productKeys.map(key =>{
            const product = fakeData.find(pd =>pd.key === key);
-           product.quantity =savedCart[key];
+           product.quantity =savedCart[key ];
            return product ;
        })
         // setCart(cartProducts)
@@ -44,9 +45,9 @@ const Review = () => {
 
     },[])
 
-   let thankYou ;
+    let thankYou ;
     if(orderPalced) {
-       thankYou = <img src={happyImage} alt=""/>
+       thankYou = <img src={happyImage} alt="happy"/>
     }
     return (
         <div className="twin-container">
@@ -71,7 +72,7 @@ const Review = () => {
            <div className="cart-container">
 
                <Cart cart={cart}>
-                   <button onClick={handlePlaceOrder} className="main-button"> Place Order</button>
+                   <button onClick={handleProceedCheckout} className="main-button"> proceed checkout</button>
                </Cart>
 
            </div>
